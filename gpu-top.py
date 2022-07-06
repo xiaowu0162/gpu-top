@@ -47,6 +47,10 @@ while i < n_line:
         pid_info = re.split(r'\s+', gpu_stats[i])
         gpu_id = pid_info[1]
         pid = pid_info[4]
+        try:
+            x = int(pid)
+        except:
+            pid = pid_info[2]
         pmem = pid_info[-2]
         pid_results.append((gpu_id, pid, pmem))
         pids.append(pid)
