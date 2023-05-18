@@ -24,6 +24,7 @@ while i < n_line:
     elif gpu_stats[i].startswith("|"):
         gpu_id = int(gpu_stats[i][1:5])
         gpu_info = gpu_stats[i+1].split('|')
+        gpu_info[1] = gpu_info[1].replace("               ", "    ")   # extra space in newest version
         gpu_temp = gpu_info[1].strip()
         gpu_mem = gpu_info[2].strip()
         gpu_utl = gpu_info[3][:8]
