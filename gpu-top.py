@@ -82,8 +82,11 @@ if len(pids) > 0:
     pid2user = {pair[0]: pair[1] for pair in pid_pair}
     pid2cmd = {pair[0]: pair[2] for pair in pid_pair}
     for gpu_id, pid, pmem in pid_results:
-        pid_table.add_row([gpu_id.rjust(3), pid.rjust(7), pid2user[pid][:14], pid2cmd[pid][:37], pmem.rjust(9)])
-
+        try:
+            pid_table.add_row([gpu_id.rjust(3), pid.rjust(7), pid2user[pid][:14], pid2cmd[pid][:37], pmem.rjust(9)])
+        except:
+            pass
+        
 if len(pids) > 0:
     print(pid_table)
 else:
